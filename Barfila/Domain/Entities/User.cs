@@ -1,12 +1,41 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Domain.Entities
 {
-    internal class User
+    public class User
     {
+
+        public Guid Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public string LastName { get; private set; }
+
+        public string UserName { get; private set; }
+        public string Email { get; private set; }
+
+        public DateTime DateOfBirth { get; private set; }
+
+        public string Password { get; private set; }
+
+        public DateTime CreatedAt { get; private set; }
+
+        private User () { }
+
+        public User (string name, string lastName, string userName, string email, string password, DateTime dateOfBirth)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            LastName = lastName;
+            UserName = userName;
+            Email = email;
+            Password = password;
+            DateOfBirth = dateOfBirth;
+            CreatedAt = DateTime.UtcNow;
+
+
+        }
     }
 }

@@ -1,11 +1,12 @@
-﻿
-
+﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Director
+    public class Actor
     {
         public Guid Id { get; private set; }
 
@@ -19,9 +20,9 @@ namespace Domain.Entities
 
         public string ProfileImagePath { get; private set; }
 
-        private Director () { }
+        private Actor() { }
 
-        public Director (string name, string lastName, DateTime dateOfBirth, string nationality, string profileImagePath)
+        public Actor(string name, string lastName, DateTime dateOfBirth, string nationality, string profileImagePath)
         {
             Id = Guid.NewGuid();
             Name = name;

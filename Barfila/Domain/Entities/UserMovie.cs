@@ -12,11 +12,11 @@ namespace Domain.Entities
         public DateTime WatchedAt { get; private set; }
         public bool IsRecommended { get; private set; }
 
-        // Claves foráneas
+        // FK
         public Guid UserId { get; private set; }
         public Guid MovieId { get; private set; }
 
-        // Propiedades de navegación
+        // propiedades de navegacion
         public User User { get; private set; }
         public Movie Movie { get; private set; }
 

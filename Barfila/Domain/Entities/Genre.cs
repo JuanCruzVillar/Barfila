@@ -13,10 +13,10 @@ namespace Domain.Entities
 
         private Genre() { }
 
-        public Genre(Guid id, string name)
+        public Genre(string name)
         {
 
-            Id = id;
+            Id = Guid.NewGuid();
 
             Name = name;
         }
