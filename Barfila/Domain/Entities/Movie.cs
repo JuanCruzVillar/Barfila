@@ -24,6 +24,8 @@ namespace Domain.Entities
 
         public ICollection<Director> Directors { get; private set; }
 
+        public ICollection<Actor> Actors{ get; private set; }
+
         private Movie() { }
 
         public Movie(string title, string synopsis, int releaseYear, int tmdbId)
@@ -35,6 +37,7 @@ namespace Domain.Entities
             TmdbId = tmdbId;
             Genres = new List<Genre>();      
             Directors = new List<Director>();
+            Actors = new List<Actor>();
         }
     }
 }

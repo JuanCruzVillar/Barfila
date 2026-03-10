@@ -1,0 +1,38 @@
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Infrastructure.Persistence.Configurations
+{
+    public class UserConfiguration : IEntityTypeConfiguration<User>
+    {
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.HasKey(m => m.Id);
+
+            builder.Property(m => m.Name)
+                .IsRequired()
+                .HasMaxLength(70);
+
+            builder.Property(m => m.UserName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(m => m.Email)
+               .IsRequired()
+               .HasMaxLength(260);
+
+            builder.Property(m => m.Password)
+                .IsRequired()
+                .HasMaxLength(260);
+
+          
+          
+        }
+    }
+}
