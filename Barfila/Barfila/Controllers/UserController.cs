@@ -1,10 +1,12 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Application.UseCases.Users.Commands;
+﻿using Application.UseCases.Users.Commands;
 using Application.UseCases.Users.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Barfila.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase

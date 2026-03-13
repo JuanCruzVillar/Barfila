@@ -1,10 +1,12 @@
 ﻿using Application.UseCases.Reviews.Commands;
 using Application.UseCases.Reviews.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Barfila.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ReviewController : ControllerBase

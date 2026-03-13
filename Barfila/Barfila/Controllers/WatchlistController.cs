@@ -1,10 +1,13 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Application.UseCases.Watchlist.Commands;
+﻿using Application.UseCases.Watchlist.Commands;
 using Application.UseCases.Watchlist.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace Barfila.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class WatchlistController : ControllerBase
