@@ -15,7 +15,7 @@ namespace Application.UseCases.Users.Queries
 
         public async Task<UserDto> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetByIdAsync(request.UserId);
+            var user = await _userRepository.GetUserByIdAsync(request.UserId);
 
             if (user == null)
                 return null;

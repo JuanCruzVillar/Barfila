@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.UseCases.Watchlist.Commands;
+using Application.UseCases.Watchlist.Queries;
 
 namespace Barfila.Controllers
 {

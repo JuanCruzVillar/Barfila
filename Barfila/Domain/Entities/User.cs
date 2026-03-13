@@ -37,5 +37,13 @@ namespace Domain.Entities
 
 
         }
+
+        public void Update(string name, string lastName, string userName, string email)
+        {
+            Name = name;
+            LastName = lastName;
+            UserName = userName;
+            Email = email;
+        }
     }
 }
