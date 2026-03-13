@@ -1,7 +1,8 @@
-﻿using Application.UseCases.Reviews.Commands;
+﻿using Application.UseCases.Movies.Queries;
+using Application.UseCases.Reviews.Commands;
+using Application.UseCases.Statistics.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Application.UseCases.Movies.Queries;
 
 namespace Barfila.Controllers
 {
@@ -32,6 +33,20 @@ namespace Barfila.Controllers
                 return BadRequest("El usuario ya registró esta película.");
 
             return Ok("Reseña agregada correctamente.");
+        }
+
+        [HttpGet("recommendations/{userId}")]
+        public async Task<IActionResult> GetRecommendations(Guid userId)
+        {
+            var result = await _mediator.Send(new GetRecommendationsQuery { UserId = userId });
+            return Ok(result);
+        }
+
+        [HttpGet("stats/{userId}")]
+        public async Task<IActionResult> GetUserStats(Guid userId)
+        {
+            var result = await _mediator.Send(new GetUserStatsQuery { UserId = userId });
+            return Ok(result);
         }
     }
 }
