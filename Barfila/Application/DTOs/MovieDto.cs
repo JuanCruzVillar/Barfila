@@ -15,6 +15,7 @@ namespace Application.DTOs
         
         public int TmdbId { get; set; }
 
+        public string? Synopsis { get; set; }
         public List<string> Genres { get; set; }
 
         public List<string> Directors { get; set; }

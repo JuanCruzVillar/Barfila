@@ -1,6 +1,7 @@
 ﻿using Application.UseCases.Reviews.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.UseCases.Movies.Queries;
 
 namespace Barfila.Controllers
 {
@@ -13,6 +14,13 @@ namespace Barfila.Controllers
         public MovieController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchMovies([FromQuery] string title)
+        {
+            var result = await _mediator.Send(new SearchMoviesQuery { Title = title });
+            return Ok(result);
         }
 
         [HttpPost("review")]

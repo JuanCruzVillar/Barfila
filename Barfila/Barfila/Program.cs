@@ -20,6 +20,7 @@ builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IUserMovieRepository, UserMovieRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddHttpClient<ITmdbService, TmdbService>();
 
 // mediatr
 builder.Services.AddMediatR(cfg =>
