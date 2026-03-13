@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  barfila-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5160:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sql-server;Database=BarfilaDb;User=sa;Password=Barfila123!;TrustServerCertificate=True
+      - ConnectionStrings__Redis=redis:6379
+      - Jwt__SecretKey=esta-es-la-clave-secreta-de-mi-proyecto-personal-barfila
+      - Jwt__Issuer=Barfila
+      - Jwt__Audience=BarfilaUsers
+      - Tmdb__ApiKey=tu-api-key-aca
+      - Tmdb__BaseUrl=https://api.themoviedb.org/3
+    depends_on:
+      - sql-server
+      - redis
+
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Barfila123!
+    ports:
+      - "1433:1433"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
