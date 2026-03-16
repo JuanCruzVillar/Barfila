@@ -24,16 +24,6 @@ namespace Barfila.Controllers
             return Ok(result);
         }
 
-        [HttpPost("review")]
-        public async Task<IActionResult> AddReview([FromBody] AddReviewCommand command)
-        {
-            var result = await _mediator.Send(command);
-
-            if (!result)
-                return BadRequest("El usuario ya registró esta película.");
-
-            return Ok("Reseña agregada correctamente.");
-        }
 
         [HttpGet("recommendations/{userId}")]
         public async Task<IActionResult> GetRecommendations(Guid userId)

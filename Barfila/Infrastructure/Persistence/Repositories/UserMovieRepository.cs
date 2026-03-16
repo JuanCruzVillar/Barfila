@@ -23,6 +23,11 @@ namespace Infrastructure.Persistence.Repositories
         {
             return await _context.UserMovies
                 .Include(um => um.Movie)
+                    .ThenInclude(m => m.Genres)
+                .Include(um => um.Movie)
+                    .ThenInclude(m => m.Directors)
+                .Include(um => um.Movie)
+                    .ThenInclude(m => m.Actors)
                 .Where(um => um.UserId == userId)
                 .ToListAsync();
         }
