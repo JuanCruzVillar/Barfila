@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+
+docker-compose.override.yml
+
+**/appsettings.json
