@@ -45,10 +45,9 @@ Los controllers no tienen logica, solo reciben y responden. Cada caso de uso tie
 1. Clona el repo
 2. Crea una cuenta en [TMDB](https://www.themoviedb.org/) y obtené tu API key
 3. Copiá `.env.example` a `.env` y completá las variables
-4. Desde la carpeta `docker/`:
-
+4. 4. Desde la raíz del proyecto:
 ```bash
-docker-compose --env-file ../.env up --build
+docker-compose --env-file .env up --build
 ```
 
 
