@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 
 namespace Infrastructure.ExternalServices
 {
@@ -66,10 +68,10 @@ namespace Infrastructure.ExternalServices
             TmdbId = movie.Id,
             Title = movie.Title,
             Synopsis = movie.Overview,
-            Year = movie.ReleaseDate?.Year ?? 0,
+            Year = DateTime.TryParse(movie.ReleaseDate, out var date) ? date.Year : 0,
             ImagePath = movie.PosterPath != null
-                ? $"https://image.tmdb.org/t/p/w500{movie.PosterPath}"
-                : null,
+    ? $"https://image.tmdb.org/t/p/w500{movie.PosterPath}"
+    : null,
             Genres = new List<string>(),
             Directors = new List<string>(),
             Actors = new List<string>()
@@ -81,10 +83,10 @@ namespace Infrastructure.ExternalServices
             TmdbId = movie.Id,
             Title = movie.Title,
             Synopsis = movie.Overview,
-            Year = movie.ReleaseDate?.Year ?? 0,
+            Year = DateTime.TryParse(movie.ReleaseDate, out var date) ? date.Year : 0,
             ImagePath = movie.PosterPath != null
-                ? $"https://image.tmdb.org/t/p/w500{movie.PosterPath}"
-                : null,
+    ? $"https://image.tmdb.org/t/p/w500{movie.PosterPath}"
+    : null,
             Duration = movie.Runtime ?? 0,
             Genres = movie.Genres?.Select(g => g.Name).ToList() ?? new List<string>(),
             Directors = movie.Credits?.Crew
@@ -107,8 +109,12 @@ namespace Infrastructure.ExternalServices
         public int Id { get; set; }
         public string Title { get; set; }
         public string Overview { get; set; }
+
+        [JsonPropertyName("poster_path")]
         public string? PosterPath { get; set; }
-        public DateTime? ReleaseDate { get; set; }
+
+        [JsonPropertyName("release_date")]
+        public string? ReleaseDate { get; set; }
     }
 
     internal class TmdbMovieDetail : TmdbMovieResult
