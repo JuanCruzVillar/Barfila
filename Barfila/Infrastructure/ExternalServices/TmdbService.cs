@@ -83,8 +83,8 @@ namespace Infrastructure.ExternalServices
             TmdbId = movie.Id,
             Title = movie.Title,
             Synopsis = movie.Overview,
-            Year = DateTime.TryParse(movie.ReleaseDate, out var date) ? date.Year : 0,
-            ImagePath = movie.PosterPath != null
+           Year = DateTime.TryParse(movie.ReleaseDate, out var date) ? date.Year : 0,
+ImagePath = movie.PosterPath != null
     ? $"https://image.tmdb.org/t/p/w500{movie.PosterPath}"
     : null,
             Duration = movie.Runtime ?? 0,
